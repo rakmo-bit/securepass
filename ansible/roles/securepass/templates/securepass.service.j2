@@ -1,0 +1,13 @@
+[Unit]
+Description={{ app_name }} - SecurePass REST API
+After=network.target
+
+[Service]
+User={{ app_user }}
+Environment=SERVER_PORT={{ app_port }}
+ExecStart=/usr/bin/java -jar {{ app_dir }}/{{ app_name }}.jar
+Restart=on-failure
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target

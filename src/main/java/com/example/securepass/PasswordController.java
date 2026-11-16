@@ -36,4 +36,9 @@ public class PasswordController {
     public Map<String, String> info() {
         return Map.of("name", "SecurePass API", "version", "1.0.0");
     }
+
+    @GetMapping("/health")
+    public Map<String, String> health() {
+        return Map.of("status", "UP");
+    }
 }

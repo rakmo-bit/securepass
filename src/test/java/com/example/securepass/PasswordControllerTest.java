@@ -38,4 +38,11 @@ class PasswordControllerTest {
         mockMvc.perform(get("/api/generate?length=3"))
                .andExpect(status().isBadRequest());
     }
+
+    @Test
+    void healthEndpointReportsUp() throws Exception {
+        mockMvc.perform(get("/api/health"))
+               .andExpect(status().isOk())
+               .andExpect(jsonPath("$.status").value("UP"));
+    }
 }

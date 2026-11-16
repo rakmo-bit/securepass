@@ -1,0 +1,11 @@
+---
+- name: Deploy SecurePass API
+  hosts: appservers
+  become: true
+
+  vars:
+    app_port: 9090
+    jar_source: "{{ playbook_dir }}/../build/libs/securepass-api-1.0.0.jar"
+
+  roles:
+    - securepass

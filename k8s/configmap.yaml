@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: securepass-config
+data:
+  SERVER_PORT: "8080"
+  JAVA_TOOL_OPTIONS: "-Xms128m -Xmx256m"

@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: securepass-api
+  labels:
+    app: securepass-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: securepass-api
+  template:
+    metadata:
+      labels:
+        app: securepass-api
+        tier: backend
+    spec:
+      containers:
+        - name: securepass-api
+          image: securepass-api:1.0.0
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: securepass-config
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 8080
+            initialDelaySeconds: 40
+            periodSeconds: 15

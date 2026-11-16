@@ -1,0 +1,6 @@
+---
+app_name: securepass
+app_user: securepass
+app_dir: /opt/securepass
+app_port: 8080
+java_package: openjdk-17-jre-headless
