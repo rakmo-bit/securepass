@@ -41,4 +41,9 @@ public class PasswordController {
     public Map<String, String> health() {
         return Map.of("status", "UP");
     }
+
+    @GetMapping("/ping")
+    public String ping() {
+        return "SecurePass API is running";
+    }
 }
